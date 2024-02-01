@@ -108,8 +108,8 @@ func printMetrics(w http.ResponseWriter, data map[string]interface{}) {
 			for key, value := range pkg {
 				if strings.HasPrefix(key, "numberOfCalls") {
 					if !wroteMeta {
-						fmt.Fprintln(w, `HELP checkbiz_call_count The number of API calls made
-TYPE checkbiz_call_count counter`)
+						fmt.Fprintln(w, `# HELP checkbiz_call_count The number of API calls made
+# TYPE checkbiz_call_count counter`)
 						wroteMeta = true
 					}
 
@@ -133,9 +133,8 @@ TYPE checkbiz_call_count counter`)
 	}
 	if len(totals) > 0 {
 		fmt.Fprintln(w, `
-HELP checkbiz_call_count The total number of API calls made for each period
-TYPE checkbiz_call_count counter
-`)
+# HELP checkbiz_call_count_total The total number of API calls made for each period
+# TYPE checkbiz_call_count_total counter`)
 		for period, total := range totals {
 			fmt.Fprintf(w, "checkbiz_call_count_total{period=%q} %d\n", period, total)
 		}
@@ -161,6 +160,6 @@ func init() {
 }
 func main() {
 	http.HandleFunc("/metrics", metricsHandler)
-	fmt.Println("Server is starting on port 8080...")
-	http.ListenAndServe(":8080", nil)
+	fmt.Println("Server is starting on port 9100...")
+	http.ListenAndServe(":9100", nil)
 }
