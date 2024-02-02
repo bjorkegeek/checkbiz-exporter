@@ -18,8 +18,8 @@ docker run -it --rm -v /your/token/file:/token  -e CHECKBIZ_TOKEN_FILE=/token ch
 ## Example output
 
 ```
-HELP checkbiz_call_count The number of API calls made
-TYPE checkbiz_call_count counter
+# HELP checkbiz_call_count The number of API calls made
+# TYPE checkbiz_call_count counter
 checkbiz_call_count{package="personsok",period="LastYear",product="PersonSearch"} 538
 checkbiz_call_count{product="PersonSearch",package="personsok",period="ThisYear"} 0
 checkbiz_call_count{package="personsok",period="LastMonth",product="PersonSearch"} 0
@@ -33,8 +33,8 @@ checkbiz_call_count{product="CompanyAutocomplete",package="CompanyAutocomplete",
 checkbiz_call_count{product="CompanyAutocomplete",package="CompanyAutocomplete",period="ThisYear"} 39
 checkbiz_call_count{product="CompanyAutocomplete",package="CompanyAutocomplete",period="LastMonth"} 32
 
-HELP checkbiz_call_count The total number of API calls made for each period
-TYPE checkbiz_call_count counter
+# HELP checkbiz_call_count The total number of API calls made for each period
+# TYPE checkbiz_call_count counter
 
 checkbiz_call_count_total{period="LastYear"} 658
 checkbiz_call_count_total{period="ThisYear"} 49
